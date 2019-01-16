@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body onload="start()">
+        <img id="can" />
+        <script>        
+function get() {
+    var data, color;
+
+    $.get('https://frozen-woodland-51964.herokuapp.com/', (res) => {
+        data = res["image"];
+        color = res["color"];
+        let image = document.getElementById("can");
+        
+        $("#can").css("background-color", color);
+
+        image.src = data;
+    });
+}
+
+function start() {
+    setInterval(function() {
+        get();
+    }, 5000);
+}
+
+        </script>
+    </body>
+</html>
